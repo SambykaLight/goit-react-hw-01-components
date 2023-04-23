@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import css from './statistics.module.css';
+import {  StatisticsSection, StatTitle, StatList, StatItem, StatLabel, StatPercentage} from './Statistics.styled.jsx';
 
 const createColor = () => {
   const color =
@@ -18,26 +18,25 @@ const createColor = () => {
 
 export const Statistics = ({ title, stats }) => {
   return (
-    <section className={css.statistics}>
-      <h2 className={css.title}>{title}</h2>
+    <StatisticsSection>
+      <StatTitle>{title}</StatTitle>
 
-      <ul className={css.statList}>
+      <StatList>
         {stats.map(stat => (
-          <li
-            className={css.item}
+          <StatItem
             key={stat.id}
             style={{ backgroundColor: createColor() }}
           >
-            <span className={css.label}>{stat.label}</span>
-            <span className={css.percentage}>{stat.percentage}</span>
-          </li>
+            <StatLabel>{stat.label}</StatLabel>
+            <StatPercentage>{stat.percentage}%</StatPercentage>
+          </StatItem>
         ))}
-      </ul>
-    </section>
+      </StatList>
+    </StatisticsSection>
   );
 };
 
 Statistics.propTypes = {
-  label: PropTypes.string.isRequired,
-  percentage: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  stats: PropTypes.array.isRequired,
 };

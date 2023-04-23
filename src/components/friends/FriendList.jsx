@@ -1,16 +1,16 @@
 import { FriendListItem } from '../friends/FriendListItem';
+import { FriendListBox, FriendItem } from './FriendList.styled.jsx';
 import PropTypes from 'prop-types';
-import css from './friend.module.css';
 
 export const FriendList = ({ friends }) => {
   return (
-    <ul className={css.friendList}>
+    <FriendListBox>
       {friends.map(({ avatar, name, isOnline, id }) => (
-        <li className={css.item} key={id}>
+        <FriendItem key={id}>
           <FriendListItem avatar={avatar} name={name} isOnline={isOnline} />
-        </li>
+        </FriendItem>
       ))}
-    </ul>
+    </FriendListBox>
   );
 };
 

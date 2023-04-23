@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-import css from './friend.module.css';
+import { FriendStatus, FriendAvatar, FriendName } from './FriendListItem.styled.jsx';
 
 export const FriendListItem = ({ avatar, name, isOnline }) => {
   return (
     <>
-      <span className={`${css.status} ${css[isOnline]}`}>{isOnline}</span>
-      <img className={css.avatar} src={avatar} alt="User avatar" width="48" />
-      <p className={css.name}>{name}</p>
+      <FriendStatus style={{backgroundColor: isOnline ? 'green' : 'red'}}>{isOnline}</FriendStatus>
+      <FriendAvatar src={avatar} alt="User avatar" width="48" />
+      <FriendName>{name}</FriendName>
     </>
   );
 };
@@ -17,14 +17,3 @@ FriendListItem.propTypes = {
   isOnline: PropTypes.bool.isRequired,
 };
 
-// function useFriendStatus(friendID) {
-//   const [isOnline, setIsOnline] = useState(null);
-
-// function FriendStatus(props) {
-//   const isOnline = useFriendStatus(props.friend.id);
-
-//   if (isOnline === null) {
-//     return 'downloading...';
-//   }
-//   return isOnline ? 'is online' : 'not online';
-//     }
